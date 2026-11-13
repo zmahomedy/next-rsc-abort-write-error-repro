@@ -28,7 +28,12 @@ REPRO_REQUEST_ERROR {"name":"Error","message":"The destination stream errored wh
 ```
 
 Verified on macOS arm64, Node 24.18.0, Next 16.4.6, React/React DOM 19.2.8.
-All five aborted requests reproduced the warning in a clean install, without
+Also verified on Next **16.5.0-canary.49**, with all five aborted requests
+producing the same warning. To compare canary, stop the server, run
+`npm install --no-save --package-lock=false next@16.5.0-canary.49`,
+then restart `npm run dev` and run `npm run reproduce`.
+
+All five stable aborted requests reproduced the warning in a clean install, without
 any dependency patch. Ordinary non-aborted rendering completes normally.
 
 For a production-mode comparison, stop dev, run `npm run build` and
